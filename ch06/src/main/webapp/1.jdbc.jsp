@@ -12,9 +12,19 @@
 	</head>
 	<body>
 		<h3>1. JDBC</h3>		
-		
-		<h4>user1</h4>
-		<a href="./user1/list.jsp">user1 목록</a>
-		<a href="./user1/register.jsp">user1 등록</a>
+		<section>
+			<div>
+				<h4>user1</h4>
+				<a href="./user1/list.jsp">목록</a>
+				<a href="./user1/register.jsp">등록</a>
+			</div>
+		</section>
+		<section>
+			<div>
+				<h4>user2</h4>
+				<a href="./user2/list.jsp">목록</a>
+				<a href="./user2/register.jsp">등록</a>
+			</div>
+		</section>
 	</body>
 </html>
