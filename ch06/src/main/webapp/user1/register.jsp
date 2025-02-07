@@ -8,9 +8,9 @@
 <body>
 	<h3>user1 등록</h3>	
 	<a href="../1.jdbc.jsp">처음으로</a>
-	<a href="../user1/list.jsp">목록으로</a>
+	<a href="./list.jsp">목록으로</a>
 	
-	<form action="../proc/register.jsp">
+	<form action="../proc/register.jsp" method="POST">
 		<table border="1">
 		<tr>
 			<td>아이디</td>

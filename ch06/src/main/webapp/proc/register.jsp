@@ -1,3 +1,6 @@
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.Context"%>
+<%@page import="javax.naming.InitialContext"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
@@ -9,14 +12,13 @@
 	String hp = request.getParameter("hp");	
 	String age = request.getParameter("age");	
 	
-	String host ="jdbc:mysql://127.0.0.1:3306/studydb";
-	String user = "root";
-	String pass = "1234";
-	
+	Context	ctx = (Context) new InitialContext().lookup("java:comp/env"); 
+	DataSource ds = (DataSource) ctx.lookup("jdbc/studydb");
+	Connection conn = ds.getConnection();
+
+
 	
 	try {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn = DriverManager.getConnection(host, user, pass);
 		String sql = "INSERT INTO `user1` VALUE (?,?,?,?);";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		
@@ -29,9 +31,9 @@
 		
 		conn.close();
 		psmt.close();
-	} catch (SQLException | ClassNotFoundException e) {
+	} catch (SQLException e) {
 	  e.printStackTrace();
 	} 
 	
-	response.sendRedirect("../list.jsp");
+	response.sendRedirect("../user1/list.jsp");
 %>

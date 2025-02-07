@@ -1,27 +1,29 @@
-<%@page import="java.security.interfaces.RSAKey"%>
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="javax.naming.Context"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="ch06.UserVO"%>
+<%@page import="ch06.User1VO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-String host ="jdbc:mysql://127.0.0.1:3306/studydb";
-	String user = "root";
-	String pass = "1234";
-	String sql = "SELECT * FROM `user1`;";
-  	List<UserVO> users = new ArrayList<>();
+  	List<User1VO> users = new ArrayList<>();
 	try {
-	  Class.forName("com.mysql.cj.jdbc.Driver");
-	  Connection conn = DriverManager.getConnection(host, user, pass);
+	  //Creating JDNI service object
+	  Context initCtx = new InitialContext();
+	  Context ctx = (Context) initCtx.lookup("java:comp/env"); // JNDI
+	  
+	  DataSource ds = (DataSource) ctx.lookup("jdbc/studydb"); // Getting resource data from web.xml
+	  Connection conn = ds.getConnection();
+
 	  Statement stmt = conn.createStatement();
 	  
+	  String sql = "SELECT * FROM `user1`;";
 	  ResultSet res = stmt.executeQuery(sql);
 	  while(res.next()) {
-	    UserVO vo = new UserVO();
+	    User1VO vo = new User1VO();
 	    vo.setUid(res.getString(1));
 	    vo.setName(res.getString(2));
 	    vo.setHp(res.getString(3));
@@ -56,7 +58,9 @@ String host ="jdbc:mysql://127.0.0.1:3306/studydb";
 			<th>나이</th>
 			<th>관리</th>
 		</tr>
-			<% for (UserVO u : users) { %>
+			<%
+			for (User1VO u : users) {
+			%>
 		<tr>
 			<% 
 				  	out.print("<td>");
@@ -73,22 +77,12 @@ String host ="jdbc:mysql://127.0.0.1:3306/studydb";
 				  	out.print("</td>");
 		  	%>
 			<td>
-				<a href="./modify.jsp">수정</a>
-				<a href="#">삭제</a>
+				<a href="./modify.jsp?uid=<%=u.getUid()%>">수정</a>
+				<a href="../proc/delete.jsp?uid=<%=u.getUid()%>">삭제</a>
 			</td>
 			<%
 				}
 			%>
-			<tr>
-				<td>a101</td>
-				<td>홍길동</td>
-				<td>010-2121-0101</td>
-				<td>21</td>
-				<td>
-					<a href="./modify.jsp">수정</a>
-					<a href="#">삭제</a>
-				</td>
-			<tr>
 		</tr>
 	</table>	
 </body>
