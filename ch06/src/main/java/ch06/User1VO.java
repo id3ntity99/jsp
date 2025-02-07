@@ -7,6 +7,10 @@ public class User1VO {
   private int age;
 
   public User1VO() {
+    String s = "SELECT " + "    o.orderNo," + "    p.prodName," + "    o.orderCount,"
+        + "    p.company," + "    c.name," + "    c.hp," + "    o.orderDate " + "FROM `order` AS o "
+        + "JOIN `product` AS p ON o.orderProduct = p.prodNo "
+        + "JOIN `customer` AS c ON o.orderId = c.custId;";
     // Empty Constructor
   }
 
