@@ -1,8 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>글쓰기</title>
+    <title>글수정</title>
     <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
@@ -17,9 +18,9 @@
             </p>
         </header>
         <main id="article">
-            <section class="write">
+            <section class="modify">
                 <nav>
-                    <h1>글쓰기</h1>
+                    <h1>글수정</h1>
                 </nav>
                 <form action="#">
                     <table border="0">                        
@@ -36,13 +37,13 @@
                         <tr>
                             <th>파일</th>
                             <td>
-                                <input type="file" name="file" />
+                                <input type="file" name="file"/>
                             </td>
                         </tr>
                     </table>
                     
                     <div>
-                        <a href="./list.html" class="btn btnCancel">취소</a>
+                        <a href="./view.html" class="btn btnCancel">취소</a>
                         <input type="submit" value="작성완료" class="btn btnComplete"/>
                     </div>
                 </form>
