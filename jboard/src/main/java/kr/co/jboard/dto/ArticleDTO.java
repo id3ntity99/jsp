@@ -5,6 +5,8 @@ public class ArticleDTO {
   private String cate;
   private String title;
   private String content;
+  private int comment;
+  private int file;
   private int hit;
   private String writer;
   private String regIp;
@@ -46,6 +48,23 @@ public class ArticleDTO {
     this.content = content;
   }
 
+
+  public int getComment() {
+    return comment;
+  }
+
+  public void setComment(int comment) {
+    this.comment = comment;
+  }
+
+  public int getFile() {
+    return file;
+  }
+
+  public void setFile(int file) {
+    this.file = file;
+  }
+
   public int getHit() {
     return hit;
   }
@@ -81,6 +100,7 @@ public class ArticleDTO {
   @Override
   public String toString() {
     return "ArticleDTO [no=" + no + ", cate=" + cate + ", title=" + title + ", content=" + content
-        + ", hit=" + hit + ", writer=" + writer + ", regIp=" + regIp + ", wdate=" + wdate + "]";
+        + ", comment=" + comment + ", file=" + file + ", hit=" + hit + ", writer=" + writer
+        + ", regIp=" + regIp + ", wdate=" + wdate + "]";
   }
 }

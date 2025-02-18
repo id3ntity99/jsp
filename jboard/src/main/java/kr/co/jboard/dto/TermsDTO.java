@@ -2,7 +2,7 @@ package kr.co.jboard.dto;
 
 public class TermsDTO {
   private int no;
-  private String trems;
+  private String terms;
   private String privacy;
 
   public TermsDTO() {
@@ -17,12 +17,12 @@ public class TermsDTO {
     this.no = no;
   }
 
-  public String getTrems() {
-    return trems;
+  public String getTerms() {
+    return terms;
   }
 
-  public void setTrems(String trems) {
-    this.trems = trems;
+  public void setTerms(String terms) {
+    this.terms = terms;
   }
 
   public String getPrivacy() {
@@ -35,6 +35,6 @@ public class TermsDTO {
 
   @Override
   public String toString() {
-    return "TermsDTO [no=" + no + ", trems=" + trems + ", privacy=" + privacy + "]";
+    return "TermsDTO [no=" + no + ", terms=" + terms + ", privacy=" + privacy + "]";
   }
 }

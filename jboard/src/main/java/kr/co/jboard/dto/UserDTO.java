@@ -1,7 +1,7 @@
 package kr.co.jboard.dto;
 
 public class UserDTO {
-  private int uid;
+  private String uid;
   private String pass;
   private String name;
   private String nick;
@@ -19,11 +19,11 @@ public class UserDTO {
     // Empty constructor
   }
 
-  public int getUid() {
+  public String getUid() {
     return uid;
   }
 
-  public void setUid(int uid) {
+  public void setUid(String uid) {
     this.uid = uid;
   }
 
